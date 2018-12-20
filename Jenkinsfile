@@ -34,9 +34,8 @@ spec:
         }
         stage('Checkout'){
             steps {
-                // git url: 'https://github.com/joostvdg/spring-boot-2-demo.git'
-                // git 'https://github.com/jfrog/project-examples.git'
-                git 'https://github.com/demomon/gradle-jenkins-challenge.git'
+                // git 'https://github.com/demomon/gradle-jenkins-challenge.git'
+		checkout scm
             }
         }
         stage('Preparation') {
@@ -67,7 +66,6 @@ spec:
             steps {
                 script {
                     buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'clean build artifactoryPublish'
-                    // buildInfo = rtGradle.run rootDir: "gradle-examples/gradle-example", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish'
                 }
             }
         }
